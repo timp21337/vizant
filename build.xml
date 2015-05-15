@@ -1,0 +1,43 @@
+<project 
+    name="vizant" 
+    default="main"  
+>
+
+ <taskdef name="vizant" 
+          classname="net.sourceforge.vizant.Vizant" 
+          classpath="vizant-0.1.2.jar"/>
+
+ <property name="name" value="build"/>
+ <target name="main">
+  <vizant antfile="${name}.xml" outfile="${name}.dot">
+
+    <attrstmt type="node">
+      <attr name="URL" value="javascript:alert('\T');"/>
+      <attr name="color" value="grey90"/>
+      <attr name="style" value="filled"/>
+    </attrstmt>
+
+    <attrstmt type="edge">
+      <attr name="color" value="gray70"/>
+    </attrstmt>
+
+    <attrstmt type="edge.antcall">
+      <attr name="label" value="antcall"/>
+      <attr name="fontcolor" value="gray70"/>
+      <attr name="fontsize" value="9"/>
+    </attrstmt>
+
+    <attrstmt type="node.default">
+      <attr name="color" value="pink"/>
+    </attrstmt>
+
+  </vizant>
+
+  <exec executable="dot" >
+    <arg line="-Tpng ${name}.dot -o ${name}.png"/>
+  </exec>
+  <exec executable="dot" >
+    <arg line="-Tsvg ${name}.dot -o ${name}.svg"/>
+  </exec>
+ </target>
+</project>

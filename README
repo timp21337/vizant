@@ -1,0 +1,3 @@
+Using vizant to visualise ant build scripts. 
+
+   ant -Dname=shared-jar

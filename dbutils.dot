@@ -1,0 +1,14 @@
+digraph "G" {
+    graph ["rankdir"="LR",];
+    node ["URL"="javascript:alert('\T');","color"="grey90","style"="filled",];
+    edge ["color"="gray70",];
+    "build" ["color"="pink",];
+    "build" -> "compile";
+    "autobuild";
+    "autobuild" -> "build";
+    "compile";
+    "publish-dbunit-jar";
+    "publish-dbunit-jar" -> "build";
+    "publish-dbunit-jar-local";
+    "publish-dbunit-jar-local" -> "build";
+}

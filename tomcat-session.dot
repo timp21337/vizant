@@ -1,0 +1,33 @@
+digraph "G" {
+    graph ["rankdir"="LR",];
+    node ["URL"="javascript:alert('\T');","color"="grey90","style"="filled",];
+    edge ["color"="gray70",];
+    "init";
+    "init" -> "retrieve-libs";
+    "clean";
+    "clean" -> "clean-retrieved-libs";
+    "build";
+    "build" -> "init";
+    "rebuild";
+    "rebuild" -> "clean";
+    "rebuild" -> "build";
+    "test";
+    "test" -> "-test-compile";
+    "test" -> "-test-run";
+    "test" -> "-test-report";
+    "retrieve-libs";
+    "clean-retrieved-libs";
+    "-test-compile";
+    "-test-compile" -> "build";
+    "-test-run";
+    "-test-report";
+    "checkstyle";
+    "checkstyle" -> "init";
+    "check-eol";
+    "autobuild";
+    "autobuild" -> "clean";
+    "autobuild" -> "check-eol";
+    "autobuild" -> "checkstyle";
+    "autobuild" -> "test";
+    "help" ["color"="pink",];
+}
